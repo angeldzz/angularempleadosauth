@@ -9,16 +9,16 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/subordinados" routerLinkActive="active">Subordinados</a>
+                <li *ngIf="apellido" class="nav-item">
+                    <a  class="nav-link" routerLink="/subordinados" routerLinkActive="active">Subordinados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/perfil" routerLinkActive="active">Perfil</a>
+                    <a *ngIf="!apellido" class="nav-link btn btn-primary" routerLink="/login" routerLinkActive="active">Login</a>
+                    <a *ngIf="apellido" class="nav-link" routerLink="/perfil" routerLinkActive="active">{{ apellido }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                    <a *ngIf="apellido" class="nav-link btn btn-secondary"  (click)="logout()">Logout</a>
                 </li>
-                
             </ul>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ServiceEmpleados } from '../../services/ServiciosEmpleados';
 import { Router } from '@angular/router';
 
@@ -8,20 +8,19 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
   public user!: string;
   public password!: string;
   constructor(
     private _service: ServiceEmpleados,
     private _router: Router,
   ) {}
-  ngOnInit(): void {
-    
-  }
   LoginToken(): void{
     this._service.AuthToken(this.user, this.password).subscribe(response => {
         localStorage.setItem("token",response.response)
-        this._router.navigate(["/"])
+        this._router.navigate(["/perfil"]).then(() => {
+          window.location.reload();
+        })
     })
   }
 }
