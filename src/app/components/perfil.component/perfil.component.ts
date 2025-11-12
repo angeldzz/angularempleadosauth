@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceEmpleados } from '../../services/ServiciosEmpleados';
 import { Router } from '@angular/router';
-import { Perfil } from '../../models/perfil';
+import { Perfil } from '../../models/Empleado';
 
 @Component({
   selector: 'app-perfil.component',
