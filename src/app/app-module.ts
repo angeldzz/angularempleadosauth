@@ -9,8 +9,8 @@ import { PerfilComponent } from './components/perfil.component/perfil.component'
 import { SubordinadosComponent } from './components/subordinados.component/subordinados.component';
 import { HomeComponent } from './components/home.component/home.component';
 import { provideHttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ServiceEmpleados } from './services/ServiciosEmpleados';
 
 @NgModule({
   declarations: [
@@ -24,13 +24,12 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule,
     FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    
+    ServiceEmpleados
   ],
   bootstrap: [App]
 })

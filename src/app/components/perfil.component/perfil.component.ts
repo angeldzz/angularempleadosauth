@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ServiceEmpleados } from '../../services/ServiciosEmpleados';
+import { Router } from '@angular/router';
+import { Perfil } from '../../models/perfil';
 
 @Component({
   selector: 'app-perfil.component',
@@ -6,6 +9,24 @@ import { Component } from '@angular/core';
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.css',
 })
-export class PerfilComponent {
-
+export class PerfilComponent implements OnInit{
+  public perfil!: Perfil;
+  constructor(private _service: ServiceEmpleados, private _router: Router) {
+  }
+  ngOnInit(): void {
+      const token = localStorage.getItem("token");
+      if(token !== null && token !== ""){
+        this._service.PerfilUsuario(token).subscribe({
+          next: (response) => {
+            this.perfil = response;
+          },
+          error: (error) => {
+            console.error(error);
+            this._router.navigate(["/login"]);
+          }
+        });
+      } else {
+        this._router.navigate(["/login"])
+      }
+  }
 }

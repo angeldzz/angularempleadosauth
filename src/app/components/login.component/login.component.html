@@ -1,1 +1,10 @@
-<p>login.component works!</p>
+<div>
+    <h1>Login</h1>
+    <form (ngSubmit)="LoginToken()" #form="ngForm">
+        <label class="form-label" for="user">Introduzca usuario</label>
+        <input class="form-control" type="text" name="user" [(ngModel)]="user">
+        <label class="form-label" for="password">Introduzca contraseña</label>
+        <input class="form-control" type="password" name="password" [(ngModel)]="password">
+        <button class="btn btn-primary">Loguearse</button>
+    </form>
+</div>
